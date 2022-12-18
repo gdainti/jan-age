@@ -3,14 +3,11 @@
   const DEFAULT_BIRTH_STRING = "2022-11-02T14:35:00.000+02:00";
   const UPDATE_INTERVAL = 1000;
   const APP_ELEMENT = document.getElementById('app');
+
   let birthString = DEFAULT_BIRTH_STRING;
 
   /* { [key: string]: HTMLDivElement } */
   const elements = {};
-
-  const generateContent = (content) => {
-    return `${content}`;
-  };
 
   const updateElement = (id, content) => {
 
@@ -19,13 +16,13 @@
     }
 
     if (elements[id]) {
-      elements[id].innerHTML = generateContent(content);
+      elements[id].innerHTML = content;
       return;
     }
 
     const element = document.createElement('div');
     element.id = id;
-    element.innerHTML = generateContent(content);
+    element.innerHTML = content;
     elements[id] = element;
     APP_ELEMENT.appendChild(element);
   };
@@ -86,6 +83,6 @@
     }, UPDATE_INTERVAL);
   };
 
-  init(DEFAULT_BIRTH_STRING);
+  init();
 
 })();
